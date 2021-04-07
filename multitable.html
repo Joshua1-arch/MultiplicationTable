@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="multitable.css">   
+</head>
+<body style="background-color:lightblue;">
+    <center><table  class="">
+         <tr>
+             <td><input type="number" name="" id="trow" style="background-color:yellow;border-radius:20px; border-color:black" placeholder="ROWS" ></td>
+             <td><input type="number" name="" id="tcolumn" style="background-color:yellow;border-radius:20px; border-color:black" placeholder="COLUMN" ></td>
+         </tr>
+         <tr><td colspan="2" align="center"><button onclick="view()" style="background-color:chartreuse;border-radius:20px; border-color:black" >DISPLAY</button></td></tr>
+         <tr><td colspan="2" align="center"><select name="" id="sel" style="background-color:chartreuse;border-radius:20px; border-color:black" >
+             <option value="*"  >Multiplication</option>
+             <option value="+" >Addition</option>
+             <option value="-" >Substraction</option>
+             <option value="/" >Division</option>
+         </select></td></tr>
+     </table></center>
+    <center> <div id="tabl" style=" color:black; border-radius:20px; border:none" ></div></center>
+     <script>       
+       function view(){
+        var tot=sel.value;
+          var tabs ="<table border='1' 'style=color:white'>"
+          tabs+="<tr>"
+            for (i=1; i<=tcolumn.value; i++){
+                   tabs+="<td>"
+              for (j=1; j<=trow.value; j++ ){
+                 var evaluate=    eval(i+tot+j)
+                if ( evaluate % 1 !==0) {
+                    var evaluate=   parseFloat( eval(i+tot+j)).toFixed(2)
+                }
+            tabs += i+tot+j+ "=" + evaluate +"<br>"
+              } 
+            tabs+="</td>"
+           }
+           tabs+="</tr>"
+            tabs+="</table>"
+        tabl.innerHTML = tabs
+        }
+     </script>
+</body>
+</html>
